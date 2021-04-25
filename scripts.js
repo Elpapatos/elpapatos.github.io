@@ -66,4 +66,24 @@
     });
   
   })(jQuery); // End of use strict
+
+  $(document).ready(function(){
+    $("#listSearch").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myList li").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+  $(document).ready(function(){
+    $.getJSON("sons.json", function(data){
+      for(var i = 0 ; i < data.length ; i++){
+        var son = data[i].substring(0, data[i].length - 4);
+        $("#myList").append('<li class="list-group-item">' + son + '</li>')
+      }
+    }).fail(function(){
+        console.log("An error has occurred.");
+    });
+  });
   
