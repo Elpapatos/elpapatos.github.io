@@ -6,8 +6,8 @@ rm sons.json
 
 rm sonsb.json
 
-curl http://192.168.1.22/son -o sons.json
-curl http://192.168.1.22/sonb -o sonsb.json
+curl http://192.168.1.22:8081/son -o sons.json
+curl http://192.168.1.22:8081/sonb -o sonsb.json
 
 if [[ `git status ./sons.json --porcelain` ]]; then
     echo "Fichié modifié, commit des changements..."
@@ -28,3 +28,7 @@ else
 fi
 
 git push
+
+if test -f "./sendToBebouCorpFr.sh"; then
+    ./sendToBebouCorpFr.sh
+fi
