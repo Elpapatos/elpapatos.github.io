@@ -3,9 +3,9 @@
 git pull
 
 while :; do
-    read -ep 'Nombre de sons du jour (1-10) : ' number
+    read -ep 'Nombre de sons du jour (1-30) : ' number
     [[ $number =~ ^[[:digit:]]+$ ]] || continue
-    (( ( (number=(10#$number)) <= 10 ) && number >= 1 )) || continue
+    (( ( (number=(10#$number)) <= 30 ) && number >= 1 )) || continue
     break
 done
 
